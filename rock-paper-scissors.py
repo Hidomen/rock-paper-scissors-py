@@ -54,14 +54,15 @@ def main () :
     print(f"SCORES : \n PLAYER : {player_score} \n COMP : {comp_score}")
 
 def result_text (player, comp, result) :
+    player_visual = move_visual(player)
+    comp_visual = move_visual(comp)
     if result != "DRAW" :
-        print(f"PLAYER : {player} \n COMP : {comp} \n RESULT : {result} WON")
+        print(f"PLAYER : {player_visual} \n COMP : {comp_visual} \n RESULT : {result} WON")
     else :
-        print(f"PLAYER : {player} \n COMP : {comp} \n RESULT : DRAW")
+        print(f"PLAYER : {player_visual} \n COMP : {comp_visual} \n RESULT : DRAW")
     
 def comp_move () :
     comp = random.choice(selections)
-
     return comp
 
 def player_move () :
@@ -71,4 +72,34 @@ def player_move () :
 
     return player
 
+def move_visual (move) :
+    if move == "ROCK" :
+        result_visual = """
+        _______
+    ---'   ____)
+          (_____)
+          (_____)
+          (____)
+    ---.__(___)
+        """
+    elif move == "SCISSORS" :
+        result_visual = """
+        _______
+    ---'   ____)____
+              ______)
+           __________)
+          (____)
+    ---.__(___)
+        """
+    elif move == "PAPER" :
+        result_visual = """
+         _______
+    ---'    ____)____
+               ______)
+              _______)
+             _______)
+    ---.__________)
+        """
+    
+    return result_visual
 main()
